@@ -23,5 +23,4 @@ jobs:
       env:
         GIT_PR_RELEASE_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
       run: |
-        git remote set-url origin https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
         git-pr-release --no-fetch --json
