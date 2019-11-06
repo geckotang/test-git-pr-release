@@ -14,11 +14,13 @@ jobs:
       uses: actions/checkout@master
     - name: Setup ruby
       uses: actions/setup-ruby@v1
+    - name: Intall
+      run: |
+        gem install -N git-pr-release
     - name: Git PR Release
       env:
         GIT_PR_RELEASE_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
       run: |
-        echo $GITHUB_REPOSITORY
-        gem install -N git-pr-release
+        echo https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
         git remote set-url origin https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
         git-pr-release --no-fetch
