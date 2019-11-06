@@ -17,3 +17,5 @@ jobs:
         ruby-version: '2.x'
     - run: gem install -N git-pr-release
     - run: git-pr-release --no-fetch
+      env:
+        GIT_PR_RELEASE_TOKEN: ${{ GIT_PR_RELEASE_TOKEN }}
