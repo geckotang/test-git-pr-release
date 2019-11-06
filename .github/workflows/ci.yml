@@ -1,0 +1,19 @@
+name: CI
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.x'
+    - run: gem install -N git-pr-release
+    - run: git-pr-release --no-fetch
