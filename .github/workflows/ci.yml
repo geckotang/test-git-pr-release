@@ -16,7 +16,7 @@ jobs:
       uses: actions/setup-ruby@v1
       with:
         ruby-version: '2.x'
-    - name: Intall
+    - name: Install git-pr-release
       run: |
         gem install git-pr-release
     - name: Git PR Release
