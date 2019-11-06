@@ -23,5 +23,8 @@ jobs:
       env:
         GIT_PR_RELEASE_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
       run: |
+        echo https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
+        git remote set-url origin https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
+        git log --merges --pretty=format:%P origin/master..origin/develop
         git log -n 1
         git-pr-release --no-fetch
