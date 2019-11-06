@@ -18,7 +18,6 @@ jobs:
         ruby-version: '2.x'
     - name: Intall
       run: |
-        apk add --no-cache git
         gem install git-pr-release
     - name: Git PR Release
       env:
