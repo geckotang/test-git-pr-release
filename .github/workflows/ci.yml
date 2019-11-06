@@ -12,10 +12,10 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@master
-    - name: Setup ruby
-      uses: actions/setup-ruby@v1
-      with:
-        ruby-version: '2.x'
+    # - name: Setup ruby
+    #   uses: actions/setup-ruby@v1
+    #   with:
+    #     ruby-version: '2.x'
     - name: Install git-pr-release
       run: |
         gem install git-pr-release -v "0.6.0"
@@ -23,8 +23,4 @@ jobs:
       env:
         GIT_PR_RELEASE_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
       run: |
-        echo https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
-        git remote set-url origin https://$GIT_PR_RELEASE_TOKEN:x-oauth-basic@github.com/$GITHUB_REPOSITORY.git
-        git log --merges --pretty=format:%P origin/master..origin/develop
-        git log -n 1
         git-pr-release --no-fetch
