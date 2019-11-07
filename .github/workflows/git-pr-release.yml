@@ -23,7 +23,7 @@ jobs:
 
     - name: Install git-pr-release
       run: |
-        gem install git-pr-release
+        gem install git-pr-release -v "0.6.0"
 
     - name: Execute git-pr-release
       env:
