@@ -1,0 +1,32 @@
+name: Create PR from develop to master
+
+on:
+  push:
+    branches:
+    - develop
+
+jobs:
+
+  gitPrRelease:
+    name: git-pr-release
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Setup ruby
+      uses: actions/setup-ruby@v1
+      with:
+        ruby-version: '2.x'
+
+    - name: Install git-pr-release
+      run: |
+        gem install git-pr-release -v "0.6.0"
+
+    - name: Execute git-pr-release
+      env:
+        GIT_PR_RELEASE_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
+      run: |
+        git-pr-release --no-fetch

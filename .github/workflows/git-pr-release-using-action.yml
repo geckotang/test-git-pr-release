@@ -1,0 +1,21 @@
+name: Create PR from develop to master with bakunyo/git-pr-release-action@master
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+
+  gitPrRelease:
+    name: git-pr-release
+    runs-on: ubuntu-latest
+
+    steps:
+
+    - uses: actions/checkout@master
+
+    - name: git-pr-release
+      uses: bakunyo/git-pr-release-action@master
+      env:
+        GITHUB_TOKEN: ${{ secrets.GIT_PR_RELEASE_TOKEN }}
