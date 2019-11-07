@@ -1,4 +1,4 @@
-name: Create PR from develop to master
+name: Create PR from develop to master with bakunyo/git-pr-release-action@master
 
 on:
   push:
